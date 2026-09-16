@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 import type { ZeroInput } from "./calculator";
-import { createKeyValueProfileRepository, createMemoryKeyValueStore, PROFILES_STORAGE_KEY } from "./profileRepository";
+import {
+  createKeyValueProfileRepository,
+  createMemoryKeyValueStore,
+  LEGACY_PROFILES_STORAGE_KEY,
+  PROFILES_STORAGE_KEY,
+} from "./profileRepository";
 import {
   createProfile,
   normalizeProfile,
@@ -93,6 +98,17 @@ describe("key-value profile repository", () => {
     expect(await repo.list()).toEqual([]);
     const store2 = createMemoryKeyValueStore({ [PROFILES_STORAGE_KEY]: JSON.stringify([{ bad: true }]) });
     expect(await createKeyValueProfileRepository(store2).list()).toEqual([]);
+  });
+
+  it("reads and migrates profiles stored under the pre-rename key", async () => {
+    const legacy = createProfile(details, input, "a", { id: "old", now: 1 });
+    const store = createMemoryKeyValueStore({ [LEGACY_PROFILES_STORAGE_KEY]: JSON.stringify([legacy]) });
+    const repo = createKeyValueProfileRepository(store);
+    expect((await repo.list()).map((p) => p.id)).toEqual(["old"]);
+
+    await repo.save(createProfile(details, input, "b", { id: "new", now: 2 }));
+    const migrated = JSON.parse(String(store.getItem(PROFILES_STORAGE_KEY)));
+    expect(migrated.map((p: { id: string }) => p.id)).toEqual(["new", "old"]);
   });
 
   it("works with async stores", async () => {

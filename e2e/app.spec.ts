@@ -74,12 +74,12 @@ test("works offline once installed as a PWA", async ({ page, context, browserNam
     const href = document.querySelector('link[rel="manifest"]')?.getAttribute("href");
     return href ? (await fetch(href)).json() : null;
   });
-  expect(manifest).toMatchObject({ short_name: "ZeroPoint", display: "standalone" });
+  expect(manifest).toMatchObject({ short_name: "Ranged", display: "standalone" });
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.reload(); // let the service worker control the page
   await context.setOffline(true);
   await page.reload();
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("ZeroPoint");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Ranged");
   await page.getByLabel("Vertical offset").fill("1");
   await expect(instruction(page)).toHaveText("Turn elevation 4 clicks up.");
   await context.setOffline(false);

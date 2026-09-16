@@ -2,7 +2,7 @@
  * Product identity. Change the name here; the header, document title,
  * PWA manifest and meta tags all read from this file.
  */
-const nameParts = ["Zero", "Point"] as const;
+const nameParts = ["Range", "d"] as const;
 const name = nameParts.join("");
 
 export const brand = {

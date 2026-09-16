@@ -46,6 +46,7 @@ async function open(browser, viewport, profiles) {
   });
   await context.addInitScript((data) => {
     try {
+      // Original app's key; the recreation still reads it as a legacy fallback.
       window.localStorage.setItem("zeropoint.profiles", JSON.stringify(data));
     } catch {}
   }, profiles);

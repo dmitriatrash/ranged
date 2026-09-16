@@ -1,6 +1,6 @@
-# ZeroPoint — optic zero calculator
+# Ranged — optic zero calculator
 
-A recreation of the ZeroPoint app, built with React, TypeScript, Vite, Tailwind CSS 4, and **HeroUI 3**. It is an installable, offline-capable PWA.
+Ranged is a recreation of the original ZeroPoint app (renamed), built with React, TypeScript, Vite, Tailwind CSS 4, and **HeroUI 3**. It is an installable, offline-capable PWA.
 
 ```bash
 npm install

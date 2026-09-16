@@ -17,15 +17,19 @@ export interface KeyValueStore {
   setItem(key: string, value: string): void | Promise<void>;
 }
 
-/** Same key the original app used, so data can migrate on the same origin. */
-export const PROFILES_STORAGE_KEY = "zeropoint.profiles";
+export const PROFILES_STORAGE_KEY = "ranged.profiles";
+/** Key used by the app before it was renamed; read when the current key is empty. */
+export const LEGACY_PROFILES_STORAGE_KEY = "zeropoint.profiles";
 
 export function createKeyValueProfileRepository(
   store: KeyValueStore,
   key: string = PROFILES_STORAGE_KEY,
+  legacyKey: string | undefined = key === PROFILES_STORAGE_KEY ? LEGACY_PROFILES_STORAGE_KEY : undefined,
 ): ProfileRepository {
   async function read(): Promise<ZeroProfile[]> {
-    const raw = await store.getItem(key);
+    let raw = await store.getItem(key);
+    // Writes always go to `key`, so the legacy data is migrated on first save.
+    if (raw === null && legacyKey) raw = await store.getItem(legacyKey);
     if (!raw) return [];
     try {
       const parsed: unknown = JSON.parse(raw);
