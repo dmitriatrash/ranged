@@ -1,0 +1,139 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+
+/* ---------------------------------------------------------------------------
+   Design tokens — copied from the original app.
+   --------------------------------------------------------------------------- */
+:root,
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --zp-radius: 1rem;
+  --zp-background: oklch(16% 0.02 250);
+  --zp-foreground: oklch(97% 0.01 240);
+  --zp-muted: oklch(25% 0.02 250 / 0.5);
+  --zp-muted-foreground: oklch(72% 0.02 240);
+  --zp-primary: oklch(78% 0.18 165);
+  --zp-primary-foreground: oklch(15% 0.02 250);
+  --zp-destructive: oklch(68% 0.22 25);
+  --zp-border: oklch(100% 0 0 / 0.12);
+  --zp-input: oklch(100% 0 0 / 0.08);
+  --zp-glow: oklch(78% 0.18 165);
+  --zp-glow-soft: oklch(78% 0.18 165 / 0.35);
+  --zp-gradient-bg:
+    radial-gradient(ellipse at top, oklch(25% 0.06 180 / 0.6), transparent 60%),
+    radial-gradient(ellipse at bottom right, oklch(22% 0.08 220 / 0.5), transparent 55%),
+    linear-gradient(180deg, oklch(14% 0.02 250), oklch(10% 0.02 250));
+  --zp-gradient-primary: linear-gradient(135deg, oklch(78% 0.18 165), oklch(72% 0.18 200));
+  --zp-shadow-card: 0 8px 32px -8px oklch(0% 0 0 / 0.6);
+
+  /* HeroUI theme variables mapped onto the same palette */
+  --radius: 1rem;
+  --background: var(--zp-background);
+  --foreground: var(--zp-foreground);
+  --muted: var(--zp-muted-foreground);
+  --accent: var(--zp-primary);
+  --accent-foreground: var(--zp-primary-foreground);
+  --focus: var(--zp-primary);
+  --danger: var(--zp-destructive);
+  --border: var(--zp-border);
+  --separator: oklch(100% 0 0 / 0.1);
+  --default: oklch(100% 0 0 / 0.05);
+  --default-foreground: var(--zp-foreground);
+  --overlay: oklch(20% 0.025 250);
+  --overlay-foreground: var(--zp-foreground);
+  --surface: oklch(22% 0.025 250 / 0.55);
+  --surface-foreground: var(--zp-foreground);
+  --field-background: oklch(100% 0 0 / 0.05);
+  --field-foreground: var(--zp-foreground);
+  --field-placeholder: var(--zp-muted-foreground);
+  --segment: var(--zp-background);
+  --segment-foreground: var(--zp-primary-foreground);
+  --backdrop: oklch(0% 0 0 / 0.8);
+}
+
+@theme inline {
+  --font-sans: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-primary: var(--zp-primary);
+  --color-primary-foreground: var(--zp-primary-foreground);
+  --color-muted-foreground: var(--zp-muted-foreground);
+  --color-destructive: var(--zp-destructive);
+  --color-input: var(--zp-input);
+
+  /* Radii match the original (radius = 1rem, shadcn-style offsets). */
+  --radius-sm: calc(var(--zp-radius) - 4px);
+  --radius-md: calc(var(--zp-radius) - 2px);
+  --radius-lg: var(--zp-radius);
+  --radius-xl: calc(var(--zp-radius) + 4px);
+  --radius-2xl: calc(var(--zp-radius) + 8px);
+  --radius-3xl: calc(var(--zp-radius) + 12px);
+}
+
+@layer base {
+  * {
+    border-color: var(--zp-border);
+  }
+  html {
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+  }
+  html,
+  body {
+    min-height: 100vh;
+  }
+  body {
+    color: var(--zp-foreground);
+    background: var(--zp-gradient-bg);
+    background-color: oklch(10% 0.02 250);
+    background-attachment: fixed;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility gradient-primary {
+  background-image: var(--zp-gradient-primary);
+}
+@utility glass {
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: var(--zp-shadow-card), inset 0 1px 0 oklch(100% 0 0 / 0.08);
+  background: oklch(100% 0 0 / 0.06);
+  border: 1px solid oklch(100% 0 0 / 0.1);
+}
+@utility glass-strong {
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: var(--zp-shadow-card), inset 0 1px 0 oklch(100% 0 0 / 0.1);
+  background: oklch(100% 0 0 / 0.1);
+  border: 1px solid oklch(100% 0 0 / 0.14);
+}
+@utility glow-ring {
+  box-shadow: 0 0 0 1px var(--zp-glow-soft), 0 0 24px -4px var(--zp-glow-soft);
+}
+@utility text-glow {
+  color: var(--zp-glow);
+  text-shadow: 0 0 24px var(--zp-glow-soft);
+}
+/* Keyboard focus ring shared by custom controls. */
+@utility focus-ring {
+  outline: none;
+  &:focus-visible {
+    outline: 2px solid var(--zp-primary);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

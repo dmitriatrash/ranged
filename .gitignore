@@ -1,0 +1,221 @@
+# ============================================================================
+# Dependencies
+# ============================================================================
+node_modules/
+jspm_packages/
+bower_components/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnpm-store/
+
+# ============================================================================
+# Build output & caches
+# ============================================================================
+dist/
+dist-ssr/
+dev-dist/
+build/
+out/
+.output/
+.vite/
+.cache/
+.parcel-cache/
+.turbo/
+.next/
+.nuxt/
+.svelte-kit/
+.vercel/
+.netlify/
+.wrangler/
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
+.prettiercache
+*.local
+
+# ============================================================================
+# Testing
+# ============================================================================
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+playwright/.auth/
+.vitest/
+__snapshots__/*.snap.new
+
+# Visual comparison output (the reference baseline is kept)
+scripts/visual/current/
+scripts/visual/diff/
+
+# ============================================================================
+# Environment & secrets
+# ============================================================================
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.mobileprovision
+.npmrc.local
+secrets.*
+credentials.json
+service-account*.json
+
+# ============================================================================
+# Logs & runtime
+# ============================================================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+pids/
+*.pid
+*.seed
+*.pid.lock
+*.tmp
+*.temp
+tmp/
+temp/
+
+# ============================================================================
+# Editors & IDEs
+# ============================================================================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
+.history/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+.fleet/
+.zed/
+*.swp
+*.swo
+*~
+\#*\#
+.\#*
+.netrwhist
+Session.vim
+
+# ============================================================================
+# Operating systems
+# ============================================================================
+.DS_Store
+.DS_Store?
+._*
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+.fseventsd
+Icon?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.directory
+.Trash-*
+
+# ============================================================================
+# Agentic coding tools
+# Local state, caches, sessions and personal settings. Shared instruction
+# files (AGENTS.md, CLAUDE.md, .github/copilot-instructions.md) stay tracked.
+# ============================================================================
+
+# Claude Code
+.claude/
+CLAUDE.local.md
+.mcp.local.json
+
+# Kombai
+.kombai/
+.kombai-cache/
+kombai-output/
+kombai.local.*
+
+# Cursor
+.cursor/
+.cursorignore.local
+.cursor-server/
+
+# Windsurf / Codeium
+.windsurf/
+.codeium/
+
+# GitHub Copilot
+.copilot/
+.github/copilot-local*
+
+# Cline / Roo Code / Kilo Code
+.cline/
+.clinerules-local*
+memory-bank/
+.roo/
+.roomodes.local
+.kilocode/
+
+# Continue
+.continue/
+
+# Aider
+.aider*
+!.aider.conf.yml.example
+
+# OpenAI Codex CLI
+.codex/
+
+# Gemini CLI
+.gemini/
+
+# Amazon Q / Kiro
+.amazonq/
+.kiro/
+
+# Zed AI, Tabnine, Sourcegraph Cody, Augment, Trae, Qodo, Goose, OpenHands, Devin
+.tabnine/
+.cody/
+.augment/
+.trae/
+.qodo/
+.goose/
+.openhands/
+.devin/
+
+# Lovable / Bolt / v0 / Replit exports
+.lovable/
+.bolt/
+.v0/
+.replit
+replit.nix
+.upm/
+
+# Spec-kit & generic agent scratch space
+.specify/memory/local*
+.agent/
+.agents/
+.ai/
+.llm/
+.prompts.local/
+agent-logs/
+*.agent.log
+*.transcript.json
