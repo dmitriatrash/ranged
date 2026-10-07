@@ -1,16 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="oklch(78% 0.18 165)"/>
-      <stop offset="1" stop-color="oklch(72% 0.18 200)"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="18" fill="url(#g)"/>
-  <g fill="none" stroke="#0b1018" stroke-width="2.5" stroke-linecap="round" transform="translate(12 12) scale(1.6667)">
-    <circle cx="12" cy="12" r="10"/>
-    <line x1="22" y1="12" x2="18" y2="12"/>
-    <line x1="6" y1="12" x2="2" y2="12"/>
-    <line x1="12" y1="6" x2="12" y2="2"/>
-    <line x1="12" y1="22" x2="12" y2="18"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="oklch(78% 0.18 165)"/><stop offset="1" stop-color="oklch(72% 0.18 200)"/></linearGradient></defs><rect width="64" height="64" fill="url(#g)" rx="18"/><g fill="none" stroke="#0b1018" stroke-linecap="round" stroke-width="2.5" transform="translate(12 12) scale(1.6667)"><circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="6" y2="2"/><line x1="12" x2="12" y1="22" y2="18"/></g></svg>
